@@ -8,9 +8,10 @@ class ReservationController extends GetxController {
   RxList places = [].obs;
   //
 
-  Future<List> getHoraire(String idPartenaire, String date, int status) async {
+  Future<List> getHoraire(
+      String id, String idPartenaire, String date, int status) async {
     Response rep =
-        await requete.getE("tickets/horaire/$idPartenaire/$date/$status");
+        await requete.getE("tickets/horaire/$id/$idPartenaire/$date/$status");
     if (rep.isOk) {
       print("::: ${rep.body}");
       return rep.body;

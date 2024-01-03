@@ -24,8 +24,11 @@ class Horaire extends StatelessWidget {
         //
         height: 130.0,
         child: FutureBuilder(
-          future: reservationController.getHoraire("${e['idPartenaire']}",
-              "${date.day}-${date.month}-${date.year}", 0),
+          future: reservationController.getHoraire(
+              "${e['id']}",
+              "${e['idPartenaire']}",
+              "${date.day}-${date.month}-${date.year}",
+              0),
           builder: (c, t) {
             if (t.hasData) {
               List l = t.data as List;
@@ -76,11 +79,11 @@ class Horaire extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                         image: NetworkImage(
-                                            "${Requete.urlSt}/partenaires/profil.png?id=${e['idPartenaire']}"),
+                                            "${Requete.urlSt}/companie/profil.png?id=${e['idPartenaire']}"),
                                       ),
                                       borderRadius: BorderRadius.circular(25),
                                     ),
-                                  )
+                                  ),
                                   //const Text("LOGO"),
                                   // Text(
                                   //   "$prix Fc ",

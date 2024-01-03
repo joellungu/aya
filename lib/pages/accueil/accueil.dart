@@ -1,5 +1,7 @@
+import 'package:aya/pages/hotels/hotel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:aya/pages/apropos/apropos.dart';
@@ -28,8 +30,10 @@ class _Accueil extends State<Accueil> {
         () => index.value == 0
             ? Recherche()
             : index.value == 1
-                ? Historique()
-                : Profil(),
+                ? Hotel()
+                : index.value == 2
+                    ? Historique()
+                    : Profil(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (e) {
@@ -39,12 +43,18 @@ class _Accueil extends State<Accueil> {
         },
         currentIndex: index.value,
         selectedItemColor: Colors.indigo.shade900,
+        unselectedItemColor: Colors.grey.shade400,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.search), label: "Recherche"),
-          BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                "assets/CircumRoute.svg",
+              ),
+              label: "Voyage"),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.business), label: "Hotels"),
+          const BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.ticket), label: "Mes tickets"),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.profile_circled),
               label: "Se connecter"),
         ],

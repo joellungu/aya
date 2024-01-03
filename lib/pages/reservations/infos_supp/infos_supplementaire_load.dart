@@ -132,7 +132,7 @@ class InfoSupplementaireLoad extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: NetworkImage(
-                                        "${Requete.urlSt}/partenaires/profil.png?id=${details['idPartenaire']}"),
+                                        "${Requete.urlSt}companie/profil.png?id=${details['idPartenaire']}"),
                                   ),
                                   borderRadius: BorderRadius.circular(25),
                                 ),

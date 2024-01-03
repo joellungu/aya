@@ -38,14 +38,25 @@ class _ArretsDetails extends State<ArretsDetails> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Arrets",
+          "Tronçons de route",
           style: TextStyle(color: Colors.white),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            //
+            Get.back();
+            //
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
         ),
         backgroundColor: Colors.indigo.shade900,
         bottom: PreferredSize(
           preferredSize: Size(100, 30),
           child: Container(
-            height: 30,
+            height: 35,
             color: Colors.indigo.shade100,
             child: Row(
               children: [

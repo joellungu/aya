@@ -10,11 +10,12 @@ import 'package:aya/widgets/achat.dart';
 import 'package:uuid/uuid.dart';
 import 'paiement_controller.dart';
 
-class Paiement extends StatefulWidget {
+class PaiementReservation extends StatefulWidget {
   //
   Map e;
   DateTime? date;
-  Paiement(this.e, this.date) {
+  Map hotel;
+  PaiementReservation(this.e, this.hotel, this.date) {
     Map x = e;
     x["chauffeur"] = "";
     x["embarqueur"] = "";
@@ -24,11 +25,11 @@ class Paiement extends StatefulWidget {
   //
   @override
   State<StatefulWidget> createState() {
-    return _Paiement();
+    return _PaiementReservation();
   }
 }
 
-class _Paiement extends State<Paiement> {
+class _PaiementReservation extends State<PaiementReservation> {
   //
 
   //
@@ -110,7 +111,7 @@ class _Paiement extends State<Paiement> {
                                   child: Text(
                                     "Payez avec tous les réseaux en RDC et en toute sécurité.",
                                     style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 17,
                                     ),
                                   ),
                                 ),
@@ -337,7 +338,6 @@ class _Paiement extends State<Paiement> {
                                 i++) {
                               //
                               le.add({
-                                "idCourse": "${widget.e['id']}",
                                 "itinerance": "${widget.e['troncons']}",
                                 //"idAgent": "",
                                 "datePaiement": "${d.day}/${d.month}/${d.year}",

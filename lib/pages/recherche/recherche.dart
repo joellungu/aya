@@ -119,7 +119,7 @@ class _Recherche extends State<Recherche> {
                       pinned: true,
                       snap: false,
                       floating: false,
-                      expandedHeight: Get.size.height / 3.1,
+                      expandedHeight: Get.size.height / 3.7,
                       flexibleSpace: FlexibleSpaceBar(
                         expandedTitleScale: 2,
                         background: Stack(
@@ -150,10 +150,10 @@ class _Recherche extends State<Recherche> {
                                                         Radius.circular(10),
                                                   ),
                                                 ),
-                                                child: Column(
+                                                child: const Column(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
-                                                  children: const [
+                                                  children: [
                                                     ListTile(
                                                       leading: Icon(Icons
                                                           .help_outline_outlined),
@@ -351,71 +351,71 @@ class _Recherche extends State<Recherche> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Via",
-                                          style: TextStyle(
-                                            fontSize: 17.0,
-                                            color: Colors.grey.shade400,
-                                          ),
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            //
-                                          },
-                                          icon: Icon(
-                                            Icons.help,
-                                            color: Colors.indigo.shade900,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                  // Padding(
+                                  //   padding: EdgeInsets.only(left: 10),
+                                  //   child: Row(
+                                  //     mainAxisAlignment:
+                                  //         MainAxisAlignment.spaceBetween,
+                                  //     children: [
+                                  //       Text(
+                                  //         "Via",
+                                  //         style: TextStyle(
+                                  //           fontSize: 17.0,
+                                  //           color: Colors.grey.shade400,
+                                  //         ),
+                                  //       ),
+                                  //       IconButton(
+                                  //         onPressed: () {
+                                  //           //
+                                  //         },
+                                  //         icon: Icon(
+                                  //           Icons.help,
+                                  //           color: Colors.indigo.shade900,
+                                  //         ),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 10, bottom: 40),
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: InkWell(
-                                  onTap: () {
-                                    renverser.value =
-                                        renverser.value ? false : true;
-                                  },
-                                  child: Container(
-                                    height: 32,
-                                    width: 32,
-                                    // foregroundDecoration: BoxDecoration(
-                                    //   color: Colors.yellow,
-                                    //   borderRadius: BorderRadius.circular(16),
-                                    // ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.indigo.shade900,
-                                      border: Border.all(
-                                        color: Colors.indigo.shade700,
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                    child: RotatedBox(
-                                      quarterTurns: 45,
-                                      child: Icon(
-                                        Icons.sync,
-                                        color: Colors.grey.shade500,
-                                      ),
-                                    ),
-                                    //color: Colors.grey.shade600,
-                                  ),
-                                ),
-                              ),
-                            )
+                            // Padding(
+                            //   padding:
+                            //       const EdgeInsets.only(right: 10, bottom: 40),
+                            //   child: Align(
+                            //     alignment: Alignment.centerRight,
+                            //     child: InkWell(
+                            //       onTap: () {
+                            //         renverser.value =
+                            //             renverser.value ? false : true;
+                            //       },
+                            //       child: Container(
+                            //         height: 32,
+                            //         width: 32,
+                            //         // foregroundDecoration: BoxDecoration(
+                            //         //   color: Colors.yellow,
+                            //         //   borderRadius: BorderRadius.circular(16),
+                            //         // ),
+                            //         decoration: BoxDecoration(
+                            //           color: Colors.indigo.shade900,
+                            //           border: Border.all(
+                            //             color: Colors.indigo.shade700,
+                            //             width: 2,
+                            //           ),
+                            //           borderRadius: BorderRadius.circular(16),
+                            //         ),
+                            //         child: RotatedBox(
+                            //           quarterTurns: 45,
+                            //           child: Icon(
+                            //             Icons.sync,
+                            //             color: Colors.grey.shade500,
+                            //           ),
+                            //         ),
+                            //         //color: Colors.grey.shade600,
+                            //       ),
+                            //     ),
+                            //   ),
+                            // )
                           ],
                         ),
                         centerTitle: false,
@@ -445,17 +445,25 @@ class _Recherche extends State<Recherche> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Expanded(
-                                    flex: 2,
+                                  const Expanded(
+                                    flex: 4,
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
-                                      children: const [
+                                      children: [
                                         Icon(
                                           Icons.calendar_month,
                                           size: 30,
                                           color: Colors.black,
                                         ),
+                                        Text(
+                                          " Jour ",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        )
                                       ],
                                     ),
                                   ),
@@ -464,7 +472,7 @@ class _Recherche extends State<Recherche> {
                                     child: Container(),
                                   ),
                                   Expanded(
-                                    flex: 3,
+                                    flex: 4,
                                     child: Obx(
                                       () => DropdownButtonHideUnderline(
                                         child: DropdownButton(
@@ -625,7 +633,114 @@ class _Recherche extends State<Recherche> {
                               "arriver": l[1],
                               "jour": l[2],
                             };
-                            return HistoriqueRecherche(x);
+                            return Container(
+                              margin: const EdgeInsets.only(
+                                top: 10,
+                                left: 10,
+                                right: 10,
+                              ),
+                              //color: index.isOdd ? Colors.white : Colors.black12,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                              height: 60.0,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    flex: 1,
+                                    child: Icon(
+                                      Icons.location_on,
+                                      color: Colors.grey.shade800,
+                                      size: 30,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 6,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          flex: 7,
+                                          child: InkWell(
+                                            onTap: () {
+                                              //depart,arriver,jour
+                                              print(
+                                                  "${x['depart']}--${x['arriver']}--${x['jour']}-- ");
+                                              //
+                                              Get.to(
+                                                Resultat(
+                                                  x['depart'],
+                                                  x['arriver'],
+                                                  jour.value,
+                                                  // int.parse(
+                                                  // x['jour'],
+                                                  // ),
+                                                ),
+                                              );
+                                            },
+                                            child: Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: RichText(
+                                                text: TextSpan(
+                                                  text: "${x['depart']}\n",
+                                                  children: [
+                                                    TextSpan(
+                                                      text: "${x['arriver']}",
+                                                      style: TextStyle(
+                                                        fontSize: 17,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                  style: TextStyle(
+                                                    fontSize: 17,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          flex: 3,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              IconButton(
+                                                onPressed: () {
+                                                  //
+                                                  setState(() {
+                                                    //
+                                                    liste.removeAt(index);
+                                                    //
+                                                    box.write(
+                                                        "historiques", liste);
+                                                    //
+                                                  });
+                                                },
+                                                icon: const Icon(
+                                                  Icons.delete,
+                                                  size: 26,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
                           },
                           childCount: liste.length,
                         ),
@@ -697,60 +812,60 @@ class HistoriqueRecherche extends StatefulWidget {
 class _HistoriqueRecherche extends State<HistoriqueRecherche> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        //depart,arriver,jour
-        print(
-            "${widget.e['depart']}--${widget.e['arriver']}--${widget.e['jour']}-- ");
-        //
-        Get.to(
-          Resultat(
-            widget.e['depart'],
-            widget.e['arriver'],
-            int.parse(
-              widget.e['jour'],
-            ),
-          ),
-        );
-      },
-      child: Container(
-        margin: const EdgeInsets.only(
-          top: 10,
-          left: 10,
-          right: 10,
-        ),
-        //color: index.isOdd ? Colors.white : Colors.black12,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(3),
-        ),
-        height: 60.0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              flex: 1,
-              child: RotatedBox(
-                quarterTurns: 90,
-                child: IconButton(
-                  icon: Icon(
-                    Icons.sync,
-                    color: Colors.grey.shade800,
-                    size: 30,
-                  ),
-                  onPressed: () {
-                    //
-                  },
+    return Container(
+      margin: const EdgeInsets.only(
+        top: 10,
+        left: 10,
+        right: 10,
+      ),
+      //color: index.isOdd ? Colors.white : Colors.black12,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(3),
+      ),
+      height: 60.0,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            flex: 1,
+            child: RotatedBox(
+              quarterTurns: 90,
+              child: IconButton(
+                icon: Icon(
+                  Icons.sync,
+                  color: Colors.grey.shade800,
+                  size: 30,
                 ),
+                onPressed: () {
+                  //
+                },
               ),
             ),
-            Expanded(
-              flex: 6,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    flex: 7,
+          ),
+          Expanded(
+            flex: 6,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  flex: 7,
+                  child: InkWell(
+                    onTap: () {
+                      //depart,arriver,jour
+                      print(
+                          "${widget.e['depart']}--${widget.e['arriver']}--${widget.e['jour']}-- ");
+                      //
+                      Get.to(
+                        Resultat(
+                          widget.e['depart'],
+                          widget.e['arriver'],
+                          int.parse(
+                            widget.e['jour'],
+                          ),
+                        ),
+                      );
+                    },
                     child: Container(
                       alignment: Alignment.centerLeft,
                       child: RichText(
@@ -775,28 +890,28 @@ class _HistoriqueRecherche extends State<HistoriqueRecherche> {
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 3,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        // Icon(
-                        //   Icons.search,
-                        //   size: 35,
-                        //   color: Colors.grey.shade600,
-                        // ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 13,
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          //
+                        },
+                        icon: const Icon(
+                          Icons.delete,
+                          size: 26,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

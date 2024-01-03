@@ -11,10 +11,10 @@ class ResultatController extends GetxController with StateMixin<List> {
     Response response =
         await requete.getE("itinerances/tronson/$depart/$arrive/$jour");
     if (response.isOk) {
-      print(response.body);
+      //print(response.body);
       change(response.body, status: RxStatus.success());
     } else {
-      print(response.body);
+      //print(response.body);
       change([], status: RxStatus.empty());
     }
   }

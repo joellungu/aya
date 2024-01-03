@@ -16,7 +16,13 @@ import 'arretDetails.dart';
 
 class Details extends StatelessWidget {
   Map e;
-  Details(this.e) {
+  String depart;
+  String arrive;
+  Details(
+    this.e,
+    this.depart,
+    this.arrive,
+  ) {
     Map p = e;
     //p['bus'] = "";
     //p['chauffeur'] = "";
@@ -60,7 +66,7 @@ class Details extends StatelessWidget {
           body: ListView(
             children: [
               Container(
-                height: Get.size.height / 9,
+                height: Get.size.height / 13,
                 color: Colors.indigo.shade100,
                 child: Row(
                   children: [
@@ -84,7 +90,7 @@ class Details extends StatelessWidget {
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  "${e['troncons']}",
+                                  "$depart -> $arrive ", //** (${e['troncons']})
                                 ),
                               ),
                             ),
@@ -104,7 +110,7 @@ class Details extends StatelessWidget {
                 ),
               ),
               Container(
-                height: Get.size.height / 7,
+                height: Get.size.height / 6,
                 //color: Colors.blue,
                 decoration: BoxDecoration(
                   border: Border(
@@ -193,38 +199,52 @@ class Details extends StatelessWidget {
                         Expanded(
                           flex: 5,
                           child: Container(
-                            padding: const EdgeInsets.only(
-                              right: 20,
-                            ),
-                            alignment: Alignment.centerRight,
-                            // child: (e['logo'] != null)
-                            //     ? Container(
-                            //         height: 50,
-                            //         width: 50,
-                            //         decoration: BoxDecoration(
-                            //           image: DecorationImage(
-                            //             image: NetworkImage(
-                            //                 "${Requete.urlSt}/partenaires/profil.png?id=${e['idPartenaire']}"),
-                            //           ),
-                            //           borderRadius: BorderRadius.circular(25),
-                            //         ),
-                            //       )
-                            //     : Container(
-                            //         height: 50,
-                            //         width: 50,
-                            //         alignment: Alignment.center,
-                            //         decoration: BoxDecoration(
-                            //           //color: Colors.red,
-                            //           borderRadius: BorderRadius.circular(25),
-                            //         ),
-                            //         child: const Icon(
-                            //           Icons.photo_camera,
-                            //           color: Colors.white,
-                            //         ),
-                            //       ),
-                            //Text("Logo"),
-                            //color: Colors.blue,
-                          ),
+                              padding: const EdgeInsets.only(
+                                right: 20,
+                              ),
+                              alignment: Alignment.centerRight,
+                              child: Image.network(
+                                "${Requete.url}/companie/profil.png?id=${e['idPartenaire']}",
+                                height: 50,
+                                width: 50,
+                                loadingBuilder: (context, child,
+                                        loadingProgress) =>
+                                    (loadingProgress == null)
+                                        ? child
+                                        : CircularProgressIndicator(),
+                                errorBuilder: (context, error, stackTrace) =>
+                                    Icon(Icons.error),
+                              )
+
+                              // (e['logo'] != null)
+                              //     ? Container(
+                              //         height: 50,
+                              //         width: 50,
+                              //         decoration: BoxDecoration(
+                              //           image: DecorationImage(
+                              //             image: NetworkImage(
+                              //                 "${Requete.urlSt}/companie/profil.png?id=${e['idPartenaire']}"),
+                              //           ),
+                              //           borderRadius: BorderRadius.circular(25),
+                              //         ),
+                              //       )
+                              //     : Container(
+                              //         height: 50,
+                              //         width: 50,
+                              //         alignment: Alignment.center,
+                              //         decoration: BoxDecoration(
+                              //           //color: Colors.red,
+                              //           borderRadius: BorderRadius.circular(25),
+                              //         ),
+                              //         child: const Icon(
+                              //           Icons.photo_camera,
+                              //           color: Colors.white,
+                              //         ),
+                              //       ),
+
+                              //Text("Logo"),
+                              //color: Colors.blue,
+                              ),
                         ),
                       ],
                     ),
@@ -294,11 +314,13 @@ class Details extends StatelessWidget {
           ),
           bottomNavigationBar: Container(
             decoration: BoxDecoration(
-                border: Border(
-                    top: BorderSide(
-              color: Colors.grey.shade400,
-              width: 1,
-            ))),
+              border: Border(
+                top: BorderSide(
+                  color: Colors.grey.shade400,
+                  width: 1,
+                ),
+              ),
+            ),
             height: 60,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -337,6 +359,30 @@ class Details extends StatelessWidget {
                     onTap: () {
                       //
                       //showSimpleModal(Emplacement(), context);
+                      //
+                      // Get.dialog(
+                      //   Center(
+                      //     child: SizedBox(
+                      //       height: 250,
+                      //       width: Get.size.width / 1.2,
+                      //       child: Column(
+                      //         children: [
+                      //           Container(
+                      //             color: Colors.blue.shade900,
+                      //             alignment: Alignment.center,
+                      //             child: Text(
+                      //               "Réservation",
+                      //               style: TextStyle(
+                      //                 color: Colors.white,
+                      //                 fontSize: 20,
+                      //               ),
+                      //             ),
+                      //           )
+                      //         ],
+                      //       ),
+                      //     ),
+                      //   ),
+                      // );
 
                       Get.to(Reservation(e));
                     },

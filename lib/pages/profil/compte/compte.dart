@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/style.dart';
 
 import 'compte_controller.dart';
 import 'creer_compte.dart';
@@ -58,7 +60,7 @@ class Compte extends StatelessWidget {
             backgroundColor: Colors.indigo.shade900,
           ),
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Center(
               child: SingleChildScrollView(
                 child: Form(
@@ -134,7 +136,10 @@ class Compte extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 onChanged: (t) {
                                   if (t == codeText.value) {
+                                    //
+                                    codeshow.value = false;
                                     Get.to(CreerCompte(profil));
+                                    //
                                   } else {
                                     codeErreur.value = "Code incorrecte";
                                   }
@@ -159,7 +164,18 @@ class Compte extends StatelessWidget {
                                   hintText: "Votre code",
                                 ),
                               )
-                            : Container(),
+                            : OTPTextField(
+                                length: 9,
+                                width: Get.size.width / 1.2,
+                                fieldWidth: 10,
+                                style: const TextStyle(fontSize: 17),
+                                textFieldAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                fieldStyle: FieldStyle.underline,
+                                onCompleted: (pin) {
+                                  //print("Completed: " + pin);
+                                },
+                              ),
                       ),
                       const SizedBox(
                         height: 50,

@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:aya/pages/splash.dart';
 
+import 'pages/hotels/hotel.dart';
+
 void main() async {
   //
 
@@ -103,7 +105,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: Splash(),
+      home:
+          //Hotel()
+          Splash(),
     );
   }
 }

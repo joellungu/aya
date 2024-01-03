@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:aya/pages/accueil/accueil.dart';
@@ -43,7 +44,123 @@ class PaiementController extends GetxController with StateMixin<List> {
       };
       Get.back();
       Get.offAll(Accueil());
-      Get.snackbar("Succes", "Enregistrement du billet effectué");
+      //Get.snackbar("Succes", "Enregistrement du billet effectué");
+      Get.dialog(
+        Center(
+          child: SizedBox(
+            height: 250,
+            width: Get.size.width / 1.2,
+            child: Card(
+              child: Column(
+                children: [
+                  Container(
+                    color: Colors.blue.shade900,
+                    alignment: Alignment.center,
+                    height: 50,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "  Nombre de jour",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            //
+                            Get.back();
+                          },
+                          icon: Icon(
+                            Icons.close,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 15,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [],
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: InkWell(
+                          onTap: () {
+                            //
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(
+                              horizontal: 15,
+                            ),
+                            height: 50,
+                            color: Colors.green.shade800,
+                            alignment: Alignment.center,
+                            //CDF
+                            child: Text(
+                              "Oui",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        flex: 4,
+                        child: InkWell(
+                          onTap: () {
+                            //
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(
+                              horizontal: 15,
+                            ),
+                            height: 50,
+                            color: Colors.red.shade800,
+                            alignment: Alignment.center,
+                            //CDF
+                            child: Text(
+                              "Oui",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
 
       //eturn rep.body;
     } else {
@@ -109,7 +226,7 @@ class PaiementController extends GetxController with StateMixin<List> {
 
   ///
   Future<Map> getCompanie(String id) async {
-    Response rep = await requete.getE("partenaires/$id");
+    Response rep = await requete.getE("companie/$id");
     if (rep.isOk) {
       return rep.body;
     } else {

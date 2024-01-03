@@ -46,7 +46,10 @@ class Resultat extends GetView<ResultatController> {
                 Get.back();
                 //
               },
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
             ),
             // title: const Text(
             //   "Choix du bus",
@@ -74,11 +77,11 @@ class Resultat extends GetView<ResultatController> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
+                        const Expanded(
                           flex: 8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: const [
+                            children: [
                               Icon(
                                 CupertinoIcons.bus,
                                 size: 35,
@@ -107,9 +110,9 @@ class Resultat extends GetView<ResultatController> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
+                    children: [
                       SizedBox(
                         width: 50,
                       ),
@@ -141,7 +144,7 @@ class Resultat extends GetView<ResultatController> {
                         size: 20,
                       ),
                       Text(
-                        "   $arrive",
+                        "  $arrive",
                         style: TextStyle(
                           color: Colors.grey.shade400,
                           fontSize: 15,
@@ -185,6 +188,8 @@ class Resultat extends GetView<ResultatController> {
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
                     Map e = l[index];
+                    print('id: ${e['id']}');
+                    //
                     List dep = "${e['heureDepart']}".split(":");
                     List arr = "${e['heureArrive']}".split(":");
                     int prix = int.parse("${e['prix']}".split(".")[0]);
@@ -207,7 +212,7 @@ class Resultat extends GetView<ResultatController> {
                                 onTap: () {
                                   //
                                   //print(e['bus']);
-                                  Get.to(Details(e));
+                                  Get.to(Details(e, depart, arrive));
                                 },
                                 child: Column(
                                   children: [
@@ -343,7 +348,7 @@ class Resultat extends GetView<ResultatController> {
                                                   decoration: BoxDecoration(
                                                     image: DecorationImage(
                                                       image: NetworkImage(
-                                                          "${Requete.urlSt}/partenaires/profil.png?id=${e['idPartenaire']}"),
+                                                          "${Requete.urlSt}/companie/profil.png?id=${e['idPartenaire']}"),
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -420,7 +425,7 @@ class Resultat extends GetView<ResultatController> {
             onEmpty: SliverToBoxAdapter(
               child: Container(),
             ),
-            onLoading: SliverToBoxAdapter(
+            onLoading: const SliverToBoxAdapter(
               child: Center(
                 child: SizedBox(
                   height: 40,

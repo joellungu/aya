@@ -51,7 +51,7 @@ class _Emplacement extends State<Emplacement> {
                   size: 40,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 15,
               ),
               Obx(

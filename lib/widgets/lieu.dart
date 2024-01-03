@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:aya/pages/recherche/lieu_controller.dart';
 import 'package:aya/utils/requetes.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:random_string/random_string.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
@@ -25,15 +26,24 @@ class _Lieu extends State<Lieu> {
   //
   LieuController lieuController = Get.find();
   //
+  var box = GetStorage();
+  //
+  RxString recherche = "".obs;
+  //
+  RxList lieux = [].obs;
+  //
   var channel;
   @override
   void initState() {
     //
-    channel = WebSocketChannel.connect(
-      Uri.parse('${Requete.ws}/recherchelieu/$nom'),
-    );
+    // channel = WebSocketChannel.connect(
+    //   Uri.parse('${Requete.ws}/recherchelieu/$nom'),
+    // );
+    // //
+    // super.initState();
+    // //
     //
-    super.initState();
+    lieux.value = box.read("lieux") ?? [];
     //
   }
 
@@ -41,7 +51,7 @@ class _Lieu extends State<Lieu> {
   @override
   void dispose() {
     //
-    channel.sink.close();
+    //channel.sink.close();
     //
     super.dispose();
     //
@@ -104,7 +114,7 @@ class _Lieu extends State<Lieu> {
                     autofocus: true,
                     onChanged: (t) {
                       //
-                      channel.sink.add(t);
+                      recherche.value = t;
                       //
                     },
                     decoration: InputDecoration(
@@ -115,40 +125,39 @@ class _Lieu extends State<Lieu> {
                 ),
                 Expanded(
                   flex: 1,
-                  child: StreamBuilder(
-                    stream: channel.stream,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        print(snapshot.data.runtimeType);
-                        String r = snapshot.data as String;
-                        List lieux = jsonDecode(r); //snapshot.data
-                        return ListView(
-                          children: List.generate(lieux.length, (index) {
-                            return ListTile(
-                              onTap: () {
-                                //
-                                if (widget.c == 0) {
-                                  lieuController.depart.value =
-                                      "${lieux[index]}";
-                                } else {
-                                  lieuController.arrive.value =
-                                      "${lieux[index]}";
-                                }
-                                //
-                                Get.back();
-                              },
-                              leading: const Icon(Icons.map_sharp),
-                              title: Text("${lieux[index]}"),
-                            );
-                          }),
-                        );
-                      } else {
-                        print(snapshot.error);
-                        return Container();
-                      }
-                      // return Text(
-                      //     snapshot.hasData ? '${snapshot.data}' : '');
-                    },
+                  child: Obx(
+                    () => ListView(
+                      children: List.generate(lieux.length, (index) {
+                        Map lieu = lieux[index];
+                        //
+                        print("lieu: $lieu");
+                        //
+                        if ("${lieu['nom']}"
+                            .toLowerCase()
+                            .contains(recherche.value.toLowerCase())) {
+                          //
+                          return ListTile(
+                            onTap: () {
+                              //
+                              if (widget.c == 0) {
+                                lieuController.depart.value =
+                                    "${lieux[index]['nom']}";
+                              } else {
+                                lieuController.arrive.value =
+                                    "${lieux[index]['nom']}";
+                              }
+                              //
+                              Get.back();
+                            },
+                            leading: const Icon(Icons.map_sharp),
+                            title: Text("${lieux[index]['nom']}"),
+                            subtitle: Text("Route ${lieux[index]['route']}"),
+                          );
+                        } else {
+                          return Container();
+                        }
+                      }),
+                    ),
                   ),
                 )
               ],

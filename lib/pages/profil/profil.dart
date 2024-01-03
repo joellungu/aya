@@ -101,7 +101,7 @@ class Profil extends StatelessWidget {
                               leading: Icon(CupertinoIcons.profile_circled),
                               title: Text("AUCUN"),
                             ),
-                      ListTile(
+                      const ListTile(
                         leading: Icon(CupertinoIcons.mail),
                         title: Text("Envoyer un commentaire"),
                         subtitle: Text("Aucun message"),
@@ -127,17 +127,17 @@ class Profil extends StatelessWidget {
                       ListTile(
                         leading: Icon(Icons.help_outline_outlined),
                         title: Text("Aide et FAQ"),
-                        subtitle: Divider(),
+                        //subtitle: Divider(),
                       ),
                       ListTile(
                         leading: Icon(CupertinoIcons.info_circle),
                         title: Text("À propos de l'application"),
-                        subtitle: Divider(),
+                        //subtitle: Divider(),
                       ),
                     ],
                   ),
                 ),
-                Divider(),
+                //Divider(),
               ],
             ),
           ),

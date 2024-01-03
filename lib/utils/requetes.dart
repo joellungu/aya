@@ -3,16 +3,16 @@ import 'package:get/get.dart';
 class Requete extends GetConnect {
   static String url = "http://10.0.2.2:8080";
   static String ws = "ws://10.0.2.2:8080";
-  static String urlSt = "http://10.0.2.2:8080/";
+  static String urlSt = "http://10.0.2.2:8080";
   //
-  //String url = "http://192.168.0.100:8080/";
-  //static String urlSt = "http://192.168.0.100:8080/";
-  //static String ws = "ws://192.168.0.100:8080";
+  // static String url = "http://192.168.0.100:8080/";
+  // static String urlSt = "http://192.168.0.100:8080/";
+  // static String ws = "ws://192.168.0.100:8080";
   //
   //static String url = "http://192.168.0.100:8080";
   //static String ws = "ws://192.168.0.100:8080";
   //
-  // static String url = "http://192.168.184.7:8080/";
+  //static String url = "http://192.168.184.7:8080/";
   //static String ws = "ws://192.168.184.7:8080";
   //static String urlSt = "http://192.168.184.7:8080/";
   //

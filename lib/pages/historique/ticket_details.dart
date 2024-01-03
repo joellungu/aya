@@ -121,7 +121,7 @@ class TicketDetails extends StatelessWidget {
                 ),
               ),
               Container(
-                height: Get.size.height / 7,
+                height: Get.size.height / 6,
                 //color: Colors.blue,
                 decoration: BoxDecoration(
                   border: Border(
@@ -256,9 +256,9 @@ class TicketDetails extends StatelessWidget {
                       title: const Text("Sexe"),
                       subtitle: Text("${e['infoPersonnel']['sexe']}"),
                     ),
-                    const Divider(
-                      color: Colors.grey,
-                    ),
+                    // const Divider(
+                    //   color: Colors.grey,
+                    // ),
                   ],
                 ),
               )
@@ -499,7 +499,7 @@ class TicketQrCode extends StatelessWidget {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: NetworkImage(
-                                "${Requete.urlSt}/partenaires/profil.png?id=${e['idPartenaire']}"),
+                                "${Requete.urlSt}/companie/profil.png?id=${e['idPartenaire']}"),
                           ),
                           borderRadius: BorderRadius.circular(25),
                         ),
